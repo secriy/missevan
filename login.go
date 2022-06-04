@@ -2,6 +2,7 @@ package missevan
 
 import (
 	"fmt"
+	"net/url"
 )
 
 type LoginParam struct {
@@ -14,6 +15,7 @@ func NewLoginParam(phone string, password string, region string) *LoginParam {
 	if region == "" {
 		region = "CN"
 	}
+	password = url.QueryEscape(password)
 	return &LoginParam{Phone: phone, Password: password, Region: region}
 }
 
